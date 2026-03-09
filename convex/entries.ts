@@ -19,3 +19,14 @@ export const createEntry = mutation({
     });
   },
 });
+// Fetch all journal entries, newest first
+export const listEntries = query({
+  args: {},
+  handler: async (ctx) => {
+    return await ctx.db
+      .query("users")
+      .order("desc")
+      .collect();
+  },
+});
+
