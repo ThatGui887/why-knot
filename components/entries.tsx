@@ -57,3 +57,19 @@ export function PreviousEntries({
                   })}
                 </CardTitle>
               </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm whitespace-pre-wrap line-clamp-3">
+                  {entry.text}
+                </p>
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <span>
+                    <span className="text-muted-foreground">Summary: </span>
+                    {entry.summary || "—"}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <span className="text-muted-foreground">Mood: </span>
+                    <span aria-hidden>{entry.moodEmoji}</span>
+                    {entry.mood}
+                  </span>
+                </div>
+              </CardContent>
