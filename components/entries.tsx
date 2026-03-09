@@ -15,3 +15,10 @@ export interface JournalEntry {
   date: string;
 }
 
+// Props expected by the PreviousEntries list component
+interface PreviousEntriesProps {
+  entries: JournalEntry[];
+  onEdit: (entry: JournalEntry) => void;
+  onDelete: (id: string) => void;
+}
+
