@@ -19,3 +19,11 @@ const MOODS: { mood: string; emoji: string }[] = [
   { mood: "Peaceful", emoji: "🌿" },
   { mood: "Inspired", emoji: "💡" },
 ];
+
+// Very basic "AI-like" summary helper that shortens the text
+function mockSummary(text: string): string {
+  const trimmed = text.trim();
+  if (!trimmed) return "No content.";
+  if (trimmed.length <= 100) return trimmed;
+  return trimmed.slice(0, 97) + "...";
+}
