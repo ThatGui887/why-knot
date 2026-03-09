@@ -27,3 +27,7 @@ function mockSummary(text: string): string {
   if (trimmed.length <= 100) return trimmed;
   return trimmed.slice(0, 97) + "...";
 }
+// Randomly pick a mood + emoji for the current entry
+function mockMood(): { mood: string; emoji: string } {
+  return MOODS[Math.floor(Math.random() * MOODS.length)];
+}
