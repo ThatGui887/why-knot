@@ -90,3 +90,12 @@ export default function JournalPage() {
     setReflection({ summary, mood, moodEmoji: emoji });
     setEntryText("");
   }, [entryText, editingId, createEntry, updateEntry]);
+  const handleEdit = useCallback((entry: JournalEntry) => {
+    setEntryText(entry.text);
+    setEditingId(entry.id);
+    setReflection({
+      summary: entry.summary,
+      mood: entry.mood,
+      moodEmoji: entry.moodEmoji,
+    });
+  }, []);
