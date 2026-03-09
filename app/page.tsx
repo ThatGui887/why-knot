@@ -8,6 +8,7 @@ import type { Id } from "@/convex/_generated/dataModel";
 import { JournalEditor } from "@/components/editor";
 import { AIReflection } from "@/components/aiResult";
 import {PreviousEntries,type JournalEntry,} from "@/components/entries";
+
 // Simple list of moods we randomly pick from for each entry
 const MOODS: { mood: string; emoji: string }[] = [
   { mood: "Calm", emoji: "😌" },
@@ -27,10 +28,12 @@ function mockSummary(text: string): string {
   if (trimmed.length <= 100) return trimmed;
   return trimmed.slice(0, 97) + "...";
 }
+
 // Randomly pick a mood + emoji for the current entry
 function mockMood(): { mood: string; emoji: string } {
   return MOODS[Math.floor(Math.random() * MOODS.length)];
 }
+
 // Convert a Convex document into the shape our UI components expect
 function docToEntry(doc: {
   _id: Id<"users">;
@@ -49,6 +52,7 @@ function docToEntry(doc: {
     date: new Date(doc.createdAt).toISOString(),
   };
 }
+
 // Main journal page: handles text input, saving, editing, and deleting entries
 export default function JournalPage() {
   const [entryText, setEntryText] = useState("");
@@ -67,6 +71,7 @@ export default function JournalPage() {
   const entries: JournalEntry[] = convexEntries
     ? convexEntries.map(docToEntry)
     : [];
+
   const handleSave = useCallback(async () => {
     const text = entryText.trim();
     if (!text) return;
@@ -90,6 +95,7 @@ export default function JournalPage() {
     setReflection({ summary, mood, moodEmoji: emoji });
     setEntryText("");
   }, [entryText, editingId, createEntry, updateEntry]);
+
   const handleEdit = useCallback((entry: JournalEntry) => {
     setEntryText(entry.text);
     setEditingId(entry.id);
