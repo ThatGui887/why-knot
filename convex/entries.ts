@@ -47,4 +47,11 @@ export const updateEntry = mutation({
     });
   },
 });
+// Permanently remove an entry by its id
+export const deleteEntry = mutation({
+  args: { id: v.id("users") },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.id);
+  },
+});
 
