@@ -67,3 +67,26 @@ export default function JournalPage() {
   const entries: JournalEntry[] = convexEntries
     ? convexEntries.map(docToEntry)
     : [];
+  const handleSave = useCallback(async () => {
+    const text = entryText.trim();
+    if (!text) return;
+
+    const { mood, emoji } = mockMood();
+    const summary = mockSummary(text);
+
+    if (editingId) {
+      await updateEntry({
+        id: editingId as Id<"users">,
+        text,
+        summary,
+        mood,
+        moodEmoji: emoji,
+      });
+      setEditingId(null);
+    } else {
+      await createEntry({ text, summary, mood, moodEmoji: emoji });
+    }
+
+    setReflection({ summary, mood, moodEmoji: emoji });
+    setEntryText("");
+  }, [entryText, editingId, createEntry, updateEntry]);
