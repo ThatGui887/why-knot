@@ -73,3 +73,30 @@ export function PreviousEntries({
                   </span>
                 </div>
               </CardContent>
+              <CardFooter className="gap-2 pt-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onEdit(entry)}
+                  className="gap-1.5"
+                >
+                  <Pencil className="size-3.5" />
+                  Edit
+                </Button>
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  onClick={() => onDelete(entry.id)}
+                  className="gap-1.5"
+                >
+                  <Trash2 className="size-3.5" />
+                  Delete
+                </Button>
+              </CardFooter>
+            </Card>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
