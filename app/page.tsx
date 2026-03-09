@@ -31,3 +31,21 @@ function mockSummary(text: string): string {
 function mockMood(): { mood: string; emoji: string } {
   return MOODS[Math.floor(Math.random() * MOODS.length)];
 }
+// Convert a Convex document into the shape our UI components expect
+function docToEntry(doc: {
+  _id: Id<"users">;
+  text: string;
+  summary: string;
+  mood: string;
+  moodEmoji: string;
+  createdAt: number;
+}): JournalEntry {
+  return {
+    id: doc._id,
+    text: doc.text,
+    summary: doc.summary,
+    mood: doc.mood,
+    moodEmoji: doc.moodEmoji,
+    date: new Date(doc.createdAt).toISOString(),
+  };
+}
