@@ -29,4 +29,22 @@ export const listEntries = query({
       .collect();
   },
 });
+// Update an existing entry by its id
+export const updateEntry = mutation({
+  args: {
+    id: v.id("users"),
+    text: v.string(),
+    summary: v.string(),
+    mood: v.string(),
+    moodEmoji: v.string(),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.id, {
+      text: args.text,
+      summary: args.summary,
+      mood: args.mood,
+      moodEmoji: args.moodEmoji,
+    });
+  },
+});
 
