@@ -1,36 +1,147 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Journaling App
 
-## Getting Started
+An AI-powered journaling app that helps you reflect on your day.  
+It analyzes each journal entry, detects the overall mood, and generates a concise summary with an emoji that captures how you felt.
 
-First, run the development server:
+## Screenshots
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Main Screen](Pictures/main.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Journal entries with CRUD**: Create, read, update, and delete entries stored in a Convex database.
+- **AI-powered reflection**: Generates a short natural-language summary of your entry.
+- **Mood detection**: Classifies the mood of your entry and displays a representative emoji.
+- **Modern UI**: Built with Next.js, Tailwind CSS, and component libraries for a clean, responsive interface.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- **Framework**: Next.js (App Router) with TypeScript
+- **Frontend**: React, Tailwind CSS, shadcn/ui components
+- **Backend / Data**: Convex
+- **AI**: OpenAI (or compatible LLM API)
+- **UI Libraries**: FlyonUI (and others as configured)
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+High-level structure of the project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+.
+├ app/
+│ ├ page.tsx          # Main page / journaling experience
+│ ├ layout.tsx        # Root layout for the app
+│ ├ providers.tsx     # Global providers (e.g. Convex, theme)
+│ ├ globals.css       # Global styles (Tailwind base/styles)
+│ └ favicon.ico
+│
+├ components/
+│ ├ editor.tsx        # Journal editor (text area + controls)
+│ ├ entries.tsx       # List of journal entries (CRUD UI)
+│ ├ aiResult.tsx      # Container that uses AI reflection component
+│ └ ui/
+│    ├ button.tsx     # Reusable button component (shadcn-style)
+│    ├ card.tsx       # Card UI component
+│    └ textarea.tsx   # Textarea UI component
+│
+├ lib/
+│ └ utils.ts          # Shared utilities (e.g. Tailwind class merger)
+│
+├ convex/
+│ ├ schema.ts         # Convex data schema
+│ ├ entries.ts        # Convex functions for journal entries
+│ ├ _generated/       # Convex generated client & types
+│ ├ README.md
+│ └ tsconfig.json
+│
+├ public/             # Static assets (icons, SVGs, etc.)
+│ ├ file.svg
+│ ├ globe.svg
+│ ├ next.svg
+│ ├ vercel.svg
+│ └ window.svg
+│
+├ package.json
+├ tsconfig.json
+├ next.config.ts
+├ postcss.config.mjs
+├ eslint.config.mjs
+├ LICENSE
+└ README.md
 
-## Deploy on Vercel
+##Getting Started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#Prerequisites:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-Node.js >= 18
+-npm, pnpm, or yarn
+-A GitHub account (for cloning the repo)
+-Optional but recommended: a Vercel account and a Convex account
+
+#Installation:
+
+-Clone the repository and install    dependencies:
+
+-git clone https://github.com/<ThatGui887>/why-knot.git
+-cd why-knot
+-npm install
+
+#Environment Variables:
+
+-Create a .env.local file in the project root.
+
+#Typical variables:
+
+-OPENAI_API_KEY=your_openai_api_key_here
+-CONVEX_DEPLOYMENT=your_convex_deployment_url_or_id
+-CONVEX_AUTH_TOKEN=your_convex_auth_token
+
+-OPENAI_API_KEY: API key for calling the AI provider.
+-Convex variables: Values needed to connect your app to your Convex deployment.
+-Do not commit .env.local to version control.
+
+#Running the App Locally
+
+Start the development server:
+
+-npm run dev
+-Then open http://localhost:3000 in your browser.
+
+#Building for Production
+Create a production build:
+
+-npm run build
+-npm start
+-This runs the app in production mode on http://localhost:3000.
+
+#Usage:
+
+-Open the app in your browser.
+-Write a journal entry in the editor.
+-Save the entry; it will be stored in Convex.
+
+The app will generate:
+
+-A summary of your entry.
+-A mood label and emoji that best represent your writing.
+-View, edit, or delete previous entries from the entries list.
+-Development Notes
+-UI components under components/ui follow the shadcn/ui pattern and are styled with Tailwind CSS.
+-Convex functions in convex/entries.ts are responsible for reading and writing journal entries.
+-The AI reflection UI is handled by AIReflection (used inside aiResult.tsx).
+
+#Deployment
+
+This app is well-suited for deployment on Vercel.
+
+Typical Vercel configuration:
+
+-Build command: npm run build
+-Output directory: .next
+-Configure the same environment variables on Vercel that you use in .env.local.
+-Convex should be deployed and connected according to Convex’s documentation.
+
+#License
+
+-This project is licensed under the MIT License.
+-See the LICENSE file for more details.
