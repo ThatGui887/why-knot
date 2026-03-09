@@ -4,3 +4,14 @@
 import { Button } from "@/components/ui/button";
 import {Card,CardContent,CardFooter,CardHeader,CardTitle,} from "@/components/ui/card";
 import { Pencil, Trash2 } from "lucide-react";
+
+// Shape of a single journal entry used throughout the UI
+export interface JournalEntry {
+  id: string;
+  text: string;
+  summary: string;
+  mood: string;
+  moodEmoji: string;
+  date: string;
+}
+
