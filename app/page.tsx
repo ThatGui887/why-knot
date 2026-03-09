@@ -49,3 +49,21 @@ function docToEntry(doc: {
     date: new Date(doc.createdAt).toISOString(),
   };
 }
+// Main journal page: handles text input, saving, editing, and deleting entries
+export default function JournalPage() {
+  const [entryText, setEntryText] = useState("");
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [reflection, setReflection] = useState<{
+    summary: string;
+    mood: string;
+    moodEmoji: string;
+  }>({ summary: "", mood: "", moodEmoji: "" });
+
+  const convexEntries = useQuery(api.entries.listEntries);
+  const createEntry = useMutation(api.entries.createEntry);
+  const updateEntry = useMutation(api.entries.updateEntry);
+  const deleteEntry = useMutation(api.entries.deleteEntry);
+
+  const entries: JournalEntry[] = convexEntries
+    ? convexEntries.map(docToEntry)
+    : [];
