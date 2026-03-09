@@ -7,3 +7,4 @@ import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import { JournalEditor } from "@/components/editor";
 import { AIReflection } from "@/components/aiResult";
+import {PreviousEntries,type JournalEntry,} from "@/components/entries";
