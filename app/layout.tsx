@@ -13,3 +13,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+// Default page title and description for the whole site
+export const metadata: Metadata = {
+  title: "AI Daily Journal",
+  description: "A modern journal with AI reflection",
+};
