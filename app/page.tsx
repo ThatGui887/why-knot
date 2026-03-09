@@ -99,3 +99,15 @@ export default function JournalPage() {
       moodEmoji: entry.moodEmoji,
     });
   }, []);
+
+  const handleDelete = useCallback(
+    async (id: string) => {
+      await deleteEntry({ id: id as Id<"users"> });
+      if (editingId === id) {
+        setEditingId(null);
+        setEntryText("");
+        setReflection({ summary: "", mood: "", moodEmoji: "" });
+      }
+    },
+    [editingId, deleteEntry]
+  );
