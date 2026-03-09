@@ -2,6 +2,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+
 // Outer card container with border, background, and padding
 function Card({ className, ...props }: React.ComponentProps<"div">) {
     return (
@@ -97,3 +98,4 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
     CardDescription,
     CardContent,
   }
+  
