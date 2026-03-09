@@ -1,3 +1,4 @@
+/* Global Tailwind + FlyonUI setup and design tokens for the whole app */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
