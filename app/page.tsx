@@ -111,3 +111,34 @@ export default function JournalPage() {
     },
     [editingId, deleteEntry]
   );
+
+  return (
+    <div className="min-h-screen bg-background">
+      <main className="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-14">
+        <h1 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-10">
+          AI Daily Journal
+        </h1>
+
+        <div className="space-y-8">
+          <JournalEditor
+            value={entryText}
+            onChange={setEntryText}
+            onSave={handleSave}
+          />
+
+          <AIReflection
+            summary={reflection.summary}
+            mood={reflection.mood}
+            moodEmoji={reflection.moodEmoji}
+          />
+
+          <PreviousEntries
+            entries={entries}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
+        </div>
+      </main>
+    </div>
+  );
+}
