@@ -18,3 +18,19 @@ export const metadata: Metadata = {
   title: "AI Daily Journal",
   description: "A modern journal with AI reflection",
 };
+// This component wraps all pages and injects fonts + global providers
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
+}
