@@ -42,3 +42,18 @@ export function PreviousEntries({
       </Card>
     );
   }
+
+  return (
+    <div className="space-y-4">
+      <h2 className="text-xl font-semibold">Previous Entries</h2>
+      <ul className="space-y-4">
+        {entries.map((entry) => (
+          <li key={entry.id}>
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  {new Date(entry.date).toLocaleDateString(undefined, {
+                    dateStyle: "medium",
+                  })}
+                </CardTitle>
+              </CardHeader>
