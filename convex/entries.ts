@@ -1,6 +1,7 @@
 // Convex backend functions for creating, listing, updating, and deleting journal entries
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
+
 // Create a new journal entry document in the \"users\" table
 export const createEntry = mutation({
   args: {
@@ -19,6 +20,7 @@ export const createEntry = mutation({
     });
   },
 });
+
 // Fetch all journal entries, newest first
 export const listEntries = query({
   args: {},
@@ -29,6 +31,7 @@ export const listEntries = query({
       .collect();
   },
 });
+
 // Update an existing entry by its id
 export const updateEntry = mutation({
   args: {
@@ -47,6 +50,7 @@ export const updateEntry = mutation({
     });
   },
 });
+
 // Permanently remove an entry by its id
 export const deleteEntry = mutation({
   args: { id: v.id("users") },
