@@ -5,7 +5,8 @@ It analyzes each journal entry, detects the overall mood, and generates a concis
 
 ## Screenshots
 
-![Main Screen](Pictures/main.png)
+<img width="1920" height="860" alt="main" src="https://github.com/user-attachments/assets/496f8fc2-0b13-481c-9344-d48dddb9e173" />
+<img width="1890" height="991" alt="deployedMain" src="https://github.com/user-attachments/assets/1cdc5fee-aeac-4c22-b55f-86f89f4e12fd" />
 
 ## Features
 
